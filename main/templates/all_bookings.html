@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Bookings</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .booking { margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h2>All Bookings</h2>
+  {% for booking in bookings %}
+    <div class="booking">
+      <strong>{{ booking.user.username }}</strong> booked 
+      {{ booking.seat_count }} seat(s) for 
+      <strong>{{ booking.show.title }}</strong> at {{ booking.booking_time }}
+    </div>
+  {% empty %}
+    <p>No bookings yet.</p>
+  {% endfor %}
+  <a href="{% url 'admin_panel' %}">Back to Admin Panel</a>
+</body>
+</html>

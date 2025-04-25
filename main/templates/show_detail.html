@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Show Details</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    a { color: #007bff; }
+  </style>
+</head>
+<body>
+  <h2>{{ show.title }}</h2>
+  <p>{{ show.date }} at {{ show.venue }}</p>
+  <p>Seats Available: {{ show.available_seats }}</p>
+  <a href="{% url 'book_show' show.pk %}">Book Now</a><br><br>
+  <a href="{% url 'shows' %}">Back to Shows</a>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Bookings</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .booking { margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <h2>My Bookings</h2>
+  {% for booking in bookings %}
+    <div class="booking">
+      <strong>{{ booking.show.title }}</strong><br>
+      Seats: {{ booking.seat_count }}<br>
+      Booked at: {{ booking.booking_time }}
+    </div>
+  {% empty %}
+    <p>No bookings found.</p>
+  {% endfor %}
+  <a href="{% url 'home' %}">Home</a>
+</body>
+</html>

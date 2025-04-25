@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .show { margin-bottom: 15px; }
+    a { margin-right: 10px; color: #007bff; }
+  </style>
+</head>
+<body>
+  <h2>Admin Panel - Manage Shows</h2>
+  <a href="{% url 'add_show' %}">+ Add Show</a><br><br>
+  {% for show in shows %}
+    <div class="show">
+      <strong>{{ show.title }}</strong> ({{ show.date }} at {{ show.venue }}) - Seats: {{ show.available_seats }}<br>
+      <a href="{% url 'edit_show' show.pk %}">Edit</a>
+      <a href="{% url 'delete_show' show.pk %}">Delete</a>
+    </div>
+  {% empty %}
+    <p>No shows found.</p>
+  {% endfor %}
+  <br>
+  <a href="{% url 'all_bookings' %}">View All Bookings</a><br>
+  <a href="{% url 'home' %}">Home</a>
+</body>
+</html>

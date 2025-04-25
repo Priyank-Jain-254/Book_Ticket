@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Show</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input, button { margin: 5px 0; padding: 8px; width: 250px; }
+  </style>
+</head>
+<body>
+  <h2>Edit Show</h2>
+  <form method="post">
+    {% csrf_token %}
+    <input name="title" value="{{ show.title }}" required><br>
+    <input name="date" value="{{ show.date|date:'Y-m-d H:i' }}" required><br>
+    <input name="venue" value="{{ show.venue }}" required><br>
+    <input name="seats" type="number" value="{{ show.available_seats }}" required><br>
+    <button type="submit">Update</button>
+  </form>
+  <a href="{% url 'admin_panel' %}">Back</a>
+</body>
+</html>

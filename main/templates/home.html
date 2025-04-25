@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { color: #333; }
+    a { margin: 0 10px; text-decoration: none; color: #007bff; }
+    a:hover { text-decoration: underline; }
+    .nav { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>🎟️ Welcome to the Ticket Booking System</h1>
+
+  {% if user.is_authenticated %}
+    <p>Hello, <strong>{{ user.username }}</strong> | <a href="{% url 'logout' %}">Logout</a></p>
+    <div class="nav">
+      <a href="{% url 'shows' %}">View Shows</a>
+      <a href="{% url 'booking_history' %}">My Bookings</a>
+      {% if user.is_staff %}
+        <a href="{% url 'admin_panel' %}">Admin Panel</a>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="nav">
+      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'register' %}">Register</a>
+    </div>
+  {% endif %}
+</body>
+</html>

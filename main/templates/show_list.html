@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Available Shows</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .show { margin-bottom: 20px; }
+    a { color: #007bff; }
+  </style>
+</head>
+<body>
+  <h2>Available Shows</h2>
+  {% for show in shows %}
+    <div class="show">
+      <h3>{{ show.title }}</h3>
+      <p>{{ show.date }} at {{ show.venue }}</p>
+      <p>Seats left: {{ show.available_seats }}</p>
+      <a href="{% url 'show_detail' show.pk %}">Details & Book</a>
+    </div>
+  {% empty %}
+    <p>No shows available.</p>
+  {% endfor %}
+  <a href="{% url 'home' %}">Home</a>
+</body>
+</html>

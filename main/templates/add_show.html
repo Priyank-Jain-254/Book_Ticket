@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Show</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input, button { margin: 5px 0; padding: 8px; width: 250px; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <h2>Add New Show</h2>
+  {% if error %}<p class="error">{{ error }}</p>{% endif %}
+  <form method="post">
+    {% csrf_token %}
+    <input name="title" placeholder="Title" required><br>
+
+    <label>Date & Time:</label><br>
+    <input name="date" type="datetime-local" required 
+           min="{{ current_time|date:'Y-m-d\\TH:i' }}"><br>
+
+    <input name="venue" placeholder="Venue" required><br>
+    <input name="seats" type="number" placeholder="Total Seats" required><br>
+    <button type="submit">Add Show</button>
+  </form>
+  <a href="{% url 'admin_panel' %}">Back</a>
+</body>
+</html>
